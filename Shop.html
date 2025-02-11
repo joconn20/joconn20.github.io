@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Shop - Workout Plans</title>
+  <style>
+    /* Basic CSS styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      background-color: #333;
+      color: #fff;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .cart-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .cart-dropdown img {
+      width: 30px;
+    }
+    .cart-dropdown-content {
+      display: none;
+      position: absolute;
+      top: 35px;
+      right: 0;
+      background-color: #fff;
+      min-width: 250px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      padding: 25px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .cart-dropdown:hover .cart-dropdown-content {
+      display: block;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .cart-item .remove-item {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .product-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .product-item:hover {
+      transform: translateY(-5px);
+    }
+    .product-image {
+      max-width: 100%;
+      height: auto;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+    }
+    .product-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    .product-price {
+      color: #b12704;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+    .add-to-cart {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ff9900;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .add-to-cart:hover {
+      background-color: #e68a00;
+    }
+    .checkout-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #ff9900;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .checkout-button:hover {
+      background-color: #ff9900;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Shop Workout Plans</h1>
+    <!-- Shopping cart dropdown -->
+    <div class="cart-dropdown">
+      <img src="cart.ico" alt="Shopping Cart">
+      <div class="cart-dropdown-content">
+        <h2>Shopping Cart</h2>
+        <div class="cart-items"></div>
+        <div class="cart-total">Total: $0.00</div>
+        <button class="checkout-button">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div class="product-grid">
+    <!-- Sample Product Item - Repeat for each product -->
+    <div class="product-item" data-id="1" data-name="Beginner Workout Plan" data-price="19.99">
+      <img class="product-image" src="beginner_workout.jpg" alt="Beginner Workout Plan">
+      <div class="product-title">Beginner Workout Plan</div>
+      <div class="product-price">$19.99</div>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <!-- End of Sample Product Item -->
+
+    <!-- Sample Product Item - Repeat for each product -->
+    <div class="product-item" data-id="2" data-name="Intermediate Workout Plan" data-price="29.99">
+      <img class="product-image" src="intermediate_workout.jpg" alt="Intermediate Workout Plan">
+      <div class="product-title">Intermediate Workout Plan</div>
+      <div class="product-price">$29.99</div>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <!-- End of Sample Product Item -->
+	
+    <!-- Sample Product Item - Repeat for each product -->
+    <div class="product-item" data-id="3" data-name="Advanced Workout Plan" data-price="39.99">
+      <img class="product-image" src="advanced_workout.jpg" alt="Advanced Workout Plan">
+      <div class="product-title">Advanced Workout Plan</div>
+      <div class="product-price">$39.99</div>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <!-- End of Sample Product Item -->
+
+    <!-- Sample Product Item - Repeat for each product -->
+    <div class="product-item" data-id="4" data-name="Custom Workout Plan" data-price="199.99">
+      <img class="product-image" src="custom_workout.jpg" alt="Custom Workout Plan">
+      <div class="product-title">Custom Workout Plan</div>
+      <div class="product-price">$199.99</div>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <!-- End of Sample Product Item -->
+
+    <!-- Add more product items here as needed -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cartTotal = document.querySelector('.cart-total');
+    const checkoutButton = document.querySelector('.checkout-button');
+
+    let cart = [];
+
+    // Function to update cart total
+    function updateCartTotal() {
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+      });
+      cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    // Function to render cart items
+    function renderCartItems() {
+      cartItemsContainer.innerHTML = '';
+      cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+          ${item.name} - $${item.price.toFixed(2)}
+          <span class="remove-item" data-id="${item.id}">&times;</span>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+      });
+
+      // Add event listeners to remove buttons
+      const removeButtons = document.querySelectorAll('.remove-item');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          removeFromCart(id);
+        });
+      });
+    }
+
+    // Function to add product to cart
+    function addToCart(id, name, price) {
+      const item = { id, name, price };
+      cart.push(item);
+      renderCartItems();
+      updateCartTotal();
+    }
+
+    // Function to remove product from cart
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      renderCartItems();
+      updateCartTotal();
+    }
+
+    // Add event listener to each "Add to Cart" button
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const product = this.parentElement;
+        const id = product.getAttribute('data-id');
+        const name = product.getAttribute('data-name');
+        const price = parseFloat(product.getAttribute('data-price'));
+        addToCart(id, name, price);
+      });
+    });
+
+    // Checkout button event listener
+    checkoutButton.addEventListener('click', function() {
+      // Redirect to checkout page (replace URL with your actual checkout page URL)
+      window.location.href = 'checkout.html';
+    });
+  });
+</script>
+
+</body>
+</html>

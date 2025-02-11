@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gothic Guitar Scales</title>
+  <style>
+    @font-face {
+      font-family: 'Soulside Betrayed';
+    }
+
+    body {
+      font-family: 'Soulside Betrayed', sans-serif;
+      background: #121212;
+      color: #cccccc; /* Nice grey for gothic theme */
+      margin: 0;
+      padding: 0;
+    }
+       header {
+		font-family: 'Soulside Betrayed', Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+       .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+    title {
+      font-family: 'Soulside Betrayed', sans-serif;
+      background: #121212;
+      color: #cccccc; /* Nice grey for gothic theme */
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin: 20px 0;
+	  font-family: 'Soulside Betrayed', Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+	  font-family: 'Soulside Betrayed', Arial, sans-serif;
+    }
+		p {
+		font-family: 'Soulside Betrayed', Arial, sans-serif;
+		margin-top: 0px; /* Add space above the "Tips" heading */
+		margin-bottom: 0px; /* Add space above the "Tips" heading */
+            color: #fff;
+            text-align: center;
+        }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .scale-selector {
+      margin: 20px 0;
+    }
+
+    .scale-selector select {
+      background: #1a1a1a;
+      color: #cccccc;
+      border: 1px solid #cccccc;
+      padding: 10px;
+      font-size: 1rem;
+      font-family: 'Soulside Betrayed', sans-serif;
+    }
+
+    .scale-selector button {
+      background: #1a1a1a;
+      color: #cccccc;
+      border: 1px solid #cccccc;
+      padding: 10px 20px;
+      font-family: 'Soulside Betrayed', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .scale-selector button:hover {
+      background: #cccccc;
+      color: #121212;
+    }
+
+    .fretboard {
+      display: grid;
+      grid-template-columns: repeat(24, 40px); /* 24 frets with proportional width */
+      gap: 2px;
+      margin-top: 20px;
+      justify-content: center;
+	        font-family: sans-serif;
+    }
+
+    .string-row {
+      display: contents; /* Allows each string's frets to align properly */
+    }
+
+    .fret {
+      background: #1a1a1a;
+      border: 1px solid #cccccc;
+      position: relative;
+      height: 40px; /* Elongated height for more accurate proportions */
+    }
+
+    .note {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      background: #cccccc;
+      color: #121212;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .note.characteristic {
+      background: #800000; /* Maroon for characteristic notes */
+    }
+
+    .note.root {
+      background: #4b0082; /* Gothic purple for root notes */
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: #cccccc;
+      text-decoration: none;
+      font-family: 'Soulside Betrayed', sans-serif;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <a href="Landing Page.html">
+            <img src="Webpage Logo.svg" alt="John O'Connor Logo" class="logo">
+        </a>
+
+
+    </header>
+  <div class="container">
+    <h1>Gothic Guitar Scales</h1>
+    <h2>Select Your Scale</h2>
+
+    <div class="scale-selector">
+      <select id="root-note">
+        <option value="C">C</option>
+        <option value="C#">C#</option>
+        <option value="D">D</option>
+        <option value="D#">D#</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="F#">F#</option>
+        <option value="G">G</option>
+        <option value="G#">G#</option>
+        <option value="A">A</option>
+        <option value="A#">A#</option>
+        <option value="B">B</option>
+      </select>
+
+      <select id="scale-type">
+        <option value="major-dorian">Major (Dorian)</option>
+        <option value="natural-minor-aeolian">Natural Minor (Aeolian)</option>
+        <option value="melodic-minor">Melodic Minor</option>
+        <option value="pentatonic-major">Pentatonic Major</option>
+        <option value="pentatonic-minor">Pentatonic Minor</option>
+        <option value="pentatonic-blues">Pentatonic Blues</option>
+        <option value="pentatonic-neutral">Pentatonic Neutral</option>
+        <option value="ionian">Ionian</option>
+        <option value="dorian">Dorian</option>
+        <option value="phrygian">Phrygian</option>
+        <option value="lydian">Lydian</option>
+        <option value="mixolydian">Mixolydian</option>
+        <option value="aeolian">Aeolian</option>
+        <option value="locrian">Locrian</option>
+      </select>
+      <button onclick="generateScale()">Show Scale</button>
+    </div>
+
+    <div class="fretboard" id="fretboard">
+      <!-- Fretboard grid will be dynamically generated here -->
+    </div>
+  </div>
+
+  <footer>
+    <p>Inspired by <a href="https://www.all-guitar-chords.com/scales" target="_blank">All Guitar Scales</a></p>
+  </footer>
+
+  <script>
+    // All scales and modes with intervals
+    const scales = {
+      'major-dorian': { intervals: [0, 2, 3, 5, 7, 9, 10], characteristic: [6] },
+      'natural-minor-aeolian': { intervals: [0, 2, 3, 5, 7, 8, 10], characteristic: [5] },
+      'melodic-minor': { intervals: [0, 2, 3, 5, 7, 9, 11], characteristic: [6] },
+      'pentatonic-major': { intervals: [0, 2, 4, 7, 9], characteristic: [] },
+      'pentatonic-minor': { intervals: [0, 3, 5, 7, 10], characteristic: [] },
+      'pentatonic-blues': { intervals: [0, 3, 5, 6, 7, 10], characteristic: [3] },
+      'pentatonic-neutral': { intervals: [0, 4, 7], characteristic: [] },
+      'ionian': { intervals: [0, 2, 4, 5, 7, 9, 11], characteristic: [11] },
+      'dorian': { intervals: [0, 2, 3, 5, 7, 9, 10], characteristic: [6] },
+      'phrygian': { intervals: [0, 1, 3, 5, 7, 8, 10], characteristic: [1] },
+      'lydian': { intervals: [0, 2, 4, 6, 7, 9, 11], characteristic: [6] },
+      'mixolydian': { intervals: [0, 2, 4, 5, 7, 9, 10], characteristic: [10] },
+      'aeolian': { intervals: [0, 2, 3, 5, 7, 8, 10], characteristic: [5] },
+      'locrian': { intervals: [0, 1, 3, 5, 6, 8, 10], characteristic: [6] },
+    };
+
+    const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+    function generateScale() {
+      const rootNote = document.getElementById('root-note').value;
+      const scaleType = document.getElementById('scale-type').value;
+      const rootIndex = notes.indexOf(rootNote);
+      const scale = scales[scaleType];
+      const scaleNotes = scale.intervals.map(interval => (rootIndex + interval) % 12);
+      const characteristicNotes = scale.characteristic.map(index => (rootIndex + index) % 12);
+
+      const fretboard = document.getElementById('fretboard');
+      fretboard.innerHTML = ''; // Clear previous fretboard
+
+      // Build 8-string, 24-fret fretboard
+      for (let string = 0; string < 8; string++) {
+        for (let fret = 0; fret < 24; fret++) {
+          const note = (string * 5 + fret) % 12;
+          const fretDiv = document.createElement('div');
+          fretDiv.className = 'fret';
+
+          if (scaleNotes.includes(note)) {
+            const noteDiv = document.createElement('div');
+            noteDiv.className = 'note';
+            if (note === rootIndex) {
+              noteDiv.classList.add('root'); // Highlight root notes in purple
+            } else if (characteristicNotes.includes(note)) {
+              noteDiv.classList.add('characteristic'); // Highlight characteristic notes in maroon
+            }
+            noteDiv.textContent = notes[note];
+            fretDiv.appendChild(noteDiv);
+          }
+
+          fretboard.appendChild(fretDiv);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

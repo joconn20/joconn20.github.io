@@ -1,9 +1,15 @@
-@font-face {
-    font-family: 'Soulside Betrayed';
-    src: url('SoulsideBetrayed.woff2') format('woff2'),
-        url('SoulsideBetrayed.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
+		@font-face {
+			font-family: 'Soulside Betrayed';
+			src: url('https://fonts.cdnfonts.com/s/14235/SoulsideBetrayed.woff2') format('woff2'),
+			url('https://fonts.cdnfonts.com/s/14235/SoulsideBetrayed.woff') format('woff'),
+			url('https://fonts.cdnfonts.com/s/14235/SoulsideBetrayed.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+		}
+		@media (max-width: 768px) {
+			body {
+				font-size: 14px; /* Adjust font size for mobile screens */
+			}
+		}
+		

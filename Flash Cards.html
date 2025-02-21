@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Notes in Chords</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #cccccc;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .flashcard-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+        }
+        .flashcard {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+            perspective: 1000px;
+        }
+        .flashcard-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .flashcard-front {
+            background-color: #333;
+        }
+        .flashcard-back {
+            background-color: #444;
+            transform: rotateY(180deg);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .progress {
+            margin: 20px;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 80%;
+            background-color: #444;
+            border-radius: 5px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .progress-bar-inner {
+            height: 20px;
+            background-color: #4caf50;
+            width: 0;
+        }
+        .feedback {
+            text-align: center;
+            margin: 10px;
+            font-size: 18px;
+        }
+        .feedback.correct {
+            color: #4caf50;
+        }
+        .feedback.incorrect {
+            color: #f44336;
+        }
+        .score {
+            text-align: center;
+            font-size: 20px;
+            margin: 10px;
+        }
+        .score span {
+            color: #4caf50;
+        }
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .controls button {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="Webpage Logo.svg" alt="John O'Connor Logo" class="logo">
+        </a>
+        <h1>Flashcards - Notes in Chords</h1>
+        <p><strong>by John O'Connor III</strong></p>
+    </header>
+
+    <div class="flashcard-container" id="flashcard-container">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="flashcard-inner">
+                <div class="flashcard-front" id="flashcard-front">
+                    I–V–vi–IV
+                </div>
+                <div class="flashcard-back" id="flashcard-back">
+                    Pop, Rock<br>Uplifting, Hopeful
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar">
+            <div class="progress-bar-inner" id="progress-bar-inner"></div>
+        </div>
+        <p id="progress-text">Progress: 0 / 1</p>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="controls">
+        <button onclick="nextCard('easy')">Easy</button>
+        <button onclick="nextCard('medium')">Medium</button>
+        <button onclick="nextCard('hard')">Hard</button>
+    </div>
+
+    <footer>
+        <h2>Igne Natura Renovatur Integra</h2>
+        <p><strong>Through Fire, Nature is Reborn Whole.</strong></p>
+        <div class="end-container">
+            <h3>&copy; 2024 John O'Connor III. All rights reserved.</h3>
+            <p>Inspired by <a href="https://www.michael-thomas.com/music/class/chords_notesinchords.htm" target="_blank">Michael Thomas</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let flashcards = [
+            {
+                front: "I–V–vi–IV",
+                back: "Pop, Rock<br>Uplifting, Hopeful",
+                difficulty: 0
+            },
+            {
+                front: "I–vi–IV–V",
+                back: "Doo-wop, Pop<br>Nostalgic, Romantic",
+                difficulty: 0
+            },
+            {
+                front: "ii–V–I",
+                back: "Jazz<br>Resolute, Satisfying",
+                difficulty: 0
+            }
+            // Add more flashcards as needed
+        ];
+        let currentCardIndex = 0;
+        let flipped = false;
+        let score = 0;
+        const totalFlashcards = flashcards.length;
+        const flashcardElement = document.getElementById('flashcard');
+        const flashcardFront = document.getElementById('flashcard-front');
+        const flashcardBack = document.getElementById('flashcard-back');
+        const progressText = document.getElementById('progress-text');
+        const progressBarInner = document.getElementById('progress-bar-inner');
+        const feedback = document.getElementById('feedback');
+        const scoreText = document.getElementById('score');
+
+        function flipCard() {
+            flashcardElement.classList.toggle('flipped');
+            flipped = !flipped;
+        }
+
+        function updateProgress() {
+            progressText.textContent = `Progress: ${currentCardIndex + 1} / ${totalFlashcards}`;
+            const progressPercentage = ((currentCardIndex + 1) / totalFlashcards) * 100;
+            progressBarInner.style.width = `${progressPercentage}%`;
+        }
+
+        function nextCard(difficulty) {
+            if (flipped) {
+                flipCard();
+            }
+            if (difficulty === 'easy') {
+                score += 10;
+                flashcards[currentCardIndex].difficulty = 'easy';
+            } else if (difficulty === 'medium') {
+                score += 5;
+                flashcards[currentCardIndex].difficulty = 'medium';
+            } else if (difficulty === 'hard') {
+                score += 2;
+                flashcards[currentCardIndex].difficulty = 'hard';
+            }
+            scoreText.textContent = score;
+            feedback.textContent = `You selected ${difficulty}`;
+            feedback.className = 'feedback correct';
+
+            currentCardIndex++;
+            if (currentCardIndex >= totalFlashcards) {
+                currentCardIndex = 0;
+            }
+            setTimeout(() => {
+                feedback.textContent = '';
+                loadCard();
+            }, 1000);
+        }
+
+        function loadCard() {
+            const card = flashcards[currentCardIndex];
+            flashcardFront.innerHTML = card.front;
+            flashcardBack.innerHTML = card.back;
+            updateProgress();
+        }
+
+        function randomizeFlashcards() {
+            for (let i = flashcards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+            }
+        }
+
+        // Randomize flashcards on page load
+        window.onload = () => {
+            randomizeFlashcards();
+            loadCard();
+        };
+    </script>
+</body>
+</html>

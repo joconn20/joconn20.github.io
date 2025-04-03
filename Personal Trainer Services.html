@@ -59,6 +59,9 @@
         }
         .contact {
             margin-right: 0;
+			margin-bottom: 0;  /* Remove any bottom margin */
+			margin-top: 0;  /* Remove any bottom margin */
+			padding-top: 0;    /* Remove any padding at the top */
         }
         h2 {
             color: #333;
@@ -73,35 +76,14 @@
         .service-item h3 {
             margin-top: 0;
         }
-        .contact form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .contact form input, .contact form textarea {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .contact form button {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .contact form button:hover {
-            background-color: #555;
-        }
+
 		iframe {
-			width: 100%; /* Makes the iframe take the full width of its container */
-			height: 500px; /* Adjust this height as needed */
-            margin-top: -200;
+			margin-top: -0; /* Remove space above the iframe */
+			width: 100%; /* Make the iframe full width */
+			height: 1050px; /* Adjust the height as needed */
+			border: none; /* Remove iframe border */
 		}
+
         footer {
             clear: both;
             text-align: center;
@@ -170,7 +152,7 @@
     </section>
 
 <section id="contact" class="contact">
-	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSnw2Lm089atL-io4YDgt7Un38Jc8yQKmWmp97cb4mBDdc_Q/viewform?embedded=true" width="640" height="915" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSnw2Lm089atL-io4YDgt7Un38Jc8yQKmWmp97cb4mBDdc_Q/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 </section>
 
 

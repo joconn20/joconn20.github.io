@@ -47,19 +47,29 @@
             background-color: #ddd;
             color: black;
         }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-        .services, .contact {
-            float: left;
-            width: 48%;
-            margin-right: 4%;
-        }
-        .contact {
-            margin-right: 0;
-        }
+		.container {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start; /* Aligns the items at the top */
+			width: 80%;
+			margin: 20px auto;
+			flex-wrap: wrap; /* Allows items to wrap to the next line if necessary */
+		}
+
+		.services {
+			width: 48%;
+		}
+
+		.contact {
+			width: 48%;
+			margin-top: 0; /* Ensures no extra space on top */
+		}
+
+		iframe {
+			width: 100%; /* Makes the iframe take the full width of its container */
+			height: 500px; /* Adjust this height as needed */
+		}
+
         h2 {
             color: #333;
         }

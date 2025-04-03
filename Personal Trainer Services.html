@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Trainer in Syracuse, NY</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+            font-family: 'Soulside Betrayed';
+            src: url('https://fonts.cdnfonts.com/s/14235/SoulsideBetrayed.woff2') format('woff2'),
+            url('https://fonts.cdnfonts.com/s/14235/SoulsideBetrayed.woff') format('woff'),
+            url('https://fonts.cdnfonts.com/s/14235/SoulsideBetrayed.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            font-family: 'Soulside Betrayed', Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .services, .contact {
+            float: left;
+            width: 48%;
+            margin-right: 4%;
+        }
+        .contact {
+            margin-right: 0;
+        }
+        h2 {
+            color: #333;
+        }
+        .service-item {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .service-item h3 {
+            margin-top: 0;
+        }
+        .contact form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .contact form input, .contact form textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact form button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact form button:hover {
+            background-color: #555;
+        }
+        footer {
+            clear: both;
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        .logo-link {
+            display: block;
+            max-width: 200px;
+            margin: 0 auto;
+            text-align: center;
+		    margin-bottom: -90px; /* Adjust the bottom margin here */
+        }
+
+        .logo {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="Landing Page.html" class="logo-link">
+        <img src="Heavy Metal Calisthenics Logo.png" alt="John O'Connor Logo" class="logo">
+    </a>
+    <h1>John O'Connor III - NASM Certified Personal Trainer</h1>
+    <p>Helping You Achieve Your Fitness Goals in Syracuse, NY</p>
+</header>
+
+<nav>
+    <a href="#services">Services</a>
+    <a href="#rates">Rates</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <section id="services" class="services">
+        <h2>Services Offered</h2>
+        <div class="service-item">
+            <h3>One-on-One Personal Training</h3>
+            <p>Personalized training sessions tailored to your individual fitness goals and needs.</p>
+        </div>
+        <div class="service-item">
+            <h3>Online Coaching</h3>
+            <p>Virtual training options for those who prefer to work out from home or on the go.</p>
+        </div>
+    </section>
+
+    <section id="rates" class="services">
+        <h2>Training Rates</h2>
+        <div class="service-item">
+            <h3>30-Minute Session</h3>
+            <p>$50</p>
+        </div>
+        <div class="service-item">
+            <h3>45-Minute Session</h3>
+            <p>$65</p>
+        </div>
+        <div class="service-item">
+            <h3>60-Minute Session</h3>
+            <p>$80</p>
+        </div>
+        <p><em>Note: Rates are competitive and reflect the quality of personalized training provided. Discounts may be available for package deals.</em></p>
+    </section>
+
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>If you're ready to start your fitness journey or have any questions, feel free to reach out!</p>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLO0mq6C2IW3rCY8yT_uCvEl5DzsUjZY2CqPtdeNbApzp-Ag/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+</section>
+
+
+
+</div>
+
+<footer>
+    <p>&copy; 2025 John O'Connor III. All rights reserved.</p>
+    <p>Serving the Syracuse, NY community with dedication and passion.</p>
+</footer>
+
+</body>
+</html>

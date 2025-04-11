@@ -6,3 +6,11 @@
 .logo-link {
     display: inline-block;
 }
+@media (max-width: 600px) {
+  table {
+    font-size: 12px; /* Smaller font size for tables */
+  }
+  th, td {
+    padding: 5px; /* Reduce padding for smaller screens */
+  }
+}
